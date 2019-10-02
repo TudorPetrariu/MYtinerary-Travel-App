@@ -18,6 +18,7 @@ export class App extends React.Component {
         <Route exact path="/SignUp" component={SignUp} />
         <Route exact path="/MYtinerary" component={MYtinerary} />
         <Route exact path="/Cities" component={Cities} />
+
       </BrowserRouter>
     );
   }

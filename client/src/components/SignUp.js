@@ -4,8 +4,8 @@ const SignUp = () => {
 
     return (
         <div >
-            <p>SignUp Page</p>
 
+            <p>Here you should sign up</p>
 
         </div>
     )
