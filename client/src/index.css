@@ -37,17 +37,32 @@ code {
 
 }
 
+
+.Login {
+  display: flex;
+  justify-content: space-around;
+  flex: 1;
+}
+
 .header-container {
   flex: 2;
 
 }
 
 .mid-container {
-  flex: 2
+  flex: 2;
+
+}
+
+a {
+  text-decoration: none;
+  color: rgba(224, 33, 19, 0.952);
+
 }
 
 .footer-container {
-  flex: 1
+  flex: 1;
+
 }
 
 img {
