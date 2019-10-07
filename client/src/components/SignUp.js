@@ -1,13 +1,29 @@
 import React from 'react'
+import HomeButton from './HomeButton'
 
 const SignUp = () => {
-
     return (
-        <div >
+        <div className="app">
+            <div className="header-container">
+                <p className="itinerarydescription">SIgn up here.</p>
+            </div>
 
-            <p>Here you should sign up</p>
+            <div className="mid-container" >
+                <p className="itinerarydescription" >Sign up form</p>
+            </div>
 
+
+
+
+
+            <div className="footer-container">
+                <p className="itinerarydescription">Submit ?</p>
+
+                <HomeButton />
+
+            </div>
         </div>
     )
 }
+
 export default SignUp;
