@@ -1,9 +1,8 @@
 import React from 'react';
 import MYtineraryLogo from '../MYtineraryLogo.png'
-import homeIcon from '../homeIcon.png'
 import circledRightarrow from '../circledRightarrow.png'
 import { NavLink } from 'react-router-dom';
-
+import { HomeButton } from './HomeButton'
 
 export class LandingPage extends React.Component {
 
@@ -33,9 +32,8 @@ export class LandingPage extends React.Component {
                 <div className="footer-container">
                     <p className="itinerarydescription">Want to build your own MYtinerary ?</p>
 
-                    <footer>
-                        <img src={homeIcon} alt="homeIcon" />
-                    </footer>
+                    <HomeButton />
+
                 </div>
             </div>
 

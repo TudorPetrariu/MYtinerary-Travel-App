@@ -1,14 +1,28 @@
 import React from 'react'
-
+import { HomeButton } from './HomeButton'
 
 const Cities = () => {
 
     return (
-        <div  >
-            <p>Travel Cities</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam inventore at excepturi fuga enim, magnam doloremque saepe adipisci et commodi aut similique dolorum incidunt repudiandae. Pariatur nisi explicabo nesciunt neque!</p>
+        <div className="app">
+            <div className="header-container">
+                <p className="itinerarydescription">Find your perfect city</p>
+            </div>
+
+            <div className="mid-container" >
+                <p className="itinerarydescription" >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis quas commodi tenetur esse nemo nesciunt, corporis praesentium deserunt. Modi facilis corrupti assumenda ipsum libero neque veritatis exercitationem voluptatem quas possimus?</p>
+            </div>
 
 
+
+
+
+            <div className="footer-container">
+                <p className="itinerarydescription">Search</p>
+
+                <HomeButton />
+
+            </div>
         </div>
     )
 }

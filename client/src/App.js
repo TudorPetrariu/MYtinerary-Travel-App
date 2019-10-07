@@ -4,8 +4,6 @@ import LogIn from './components/LogIn'
 import SignUp from './components/SignUp'
 import MYtinerary from './components/MYtinerary'
 import LandingPage from './components/LandingPage'
-
-
 import { BrowserRouter, Route } from 'react-router-dom'
 
 export class App extends React.Component {
