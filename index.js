@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 MongoClient.connect('mongodb://tudor123:tudor123@cities-shard-00-00-nv87y.mongodb.net:27017,cities-shard-00-01-nv87y.mongodb.net:27017,cities-shard-00-02-nv87y.mongodb.net:27017/admin?ssl=true&replicaSet=cities-shard-0&authSource=admin&retryWrites=true&w=majority', (err, db) => {
     if (err) return console.log(err)
 
-    app.listen(3000, () => {
+    app.listen(8080, () => {
         console.log('app working on 3000')
     });
 
@@ -28,17 +28,21 @@ MongoClient.connect('mongodb://tudor123:tudor123@cities-shard-00-00-nv87y.mongod
 
         dbase.collection("cities").save(city, (err, result) => {
             if (err) {
-                console.log(err);
+                throw console.error(err)
             }
 
-            res.send('name added successfully');
+            res.send('data added successfully');
         });
 
     });
 
-    app.get('/cities', (req, res, next) => {
+    app.get('/cities', (req, res) => {
         dbase.collection('cities').find().toArray((err, results) => {
-            res.send(results)
+            if (err) throw console.error(err)
+            res.send({
+                success: true,
+                data: results
+            })
         });
     });
 
@@ -67,7 +71,7 @@ MongoClient.connect('mongodb://tudor123:tudor123@cities-shard-00-00-nv87y.mongod
                 throw err;
             }
 
-            res.send('user updated sucessfully');
+            res.send('info updated sucessfully');
         });
     });
 
@@ -80,7 +84,7 @@ MongoClient.connect('mongodb://tudor123:tudor123@cities-shard-00-00-nv87y.mongod
                 throw err;
             }
 
-            res.send('user deleted');
+            res.send('data deleted');
         });
     });
 
