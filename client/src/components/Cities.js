@@ -1,34 +1,34 @@
 import React, { Component } from 'react'
 import { HomeButton } from './HomeButton'
 
-
 class MyCities extends Component {
+
 
     state = {
         cities: []
     }
 
-
     async componentDidMount() {
 
-        let cities = await fetch('/cities', {
+        let fetchedCities = await fetch('/cities', {
             method: "GET",
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         })
+
             .then(res => res.json())
             .then(json => json.data)
 
         this.setState({
-            cities: cities
+            cities: fetchedCities
         })
-
+        console.log(this.state.cities)
 
     }
 
+
     render() {
-        console.log(this.state.cities)
         const { cities } = this.state;
         const citiesList = cities.length ? (cities.map(city => {
             return (
@@ -40,14 +40,13 @@ class MyCities extends Component {
                 </div>
             )
         })) : (
-                <div>nothing</div>
+                <div>Loading cities</div>
             )
         return (
             <div className="app">
                 <div className="header-container">
                     <p className="itinerarydescription">Find your perfect city</p>
                 </div>
-
                 <div className="mid-container" >
                     <p className="itinerarydescription" >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis quas commodi tenetur esse nemo nesciunt, corporis praesentium deserunt. Modi facilis corrupti assumenda ipsum libero neque veritatis exercitationem voluptatem quas possimus?</p>
                 </div>
@@ -63,4 +62,5 @@ class MyCities extends Component {
         )
     }
 }
+
 export default MyCities;

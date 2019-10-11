@@ -1,13 +1,32 @@
 import React from 'react'
+import { connect } from 'react-redux';
+import { fetchCities } from "../redux/actions/cityAction"
 
-const MYtinerary = () => {
+class MYtinerary extends React.Component {
 
-    return (
-        <div >
-            <p>MYtinerary page</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit ratione magni officia repellat odit ea doloremque sequi? Porro nostrum ullam architecto sequi asperiores quaerat sapiente quibusdam doloribus quae. Odio, asperiores?</p>
-
-        </div>
-    )
+    componentDidMount() {
+        this.props.getCities()
+    }
+    render() {
+        console.log(this.props)
+        return (
+            <div >
+                <p>cities</p>
+            </div>
+        )
+    }
 }
-export default MYtinerary;
+
+
+const mapStateToProps = (state) => {
+    return {
+        cities: state.cities
+
+    }
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getCities: () => dispatch(fetchCities())
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(MYtinerary);

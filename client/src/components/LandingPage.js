@@ -4,7 +4,10 @@ import circledRightarrow from '../circledRightarrow.png'
 import { NavLink } from 'react-router-dom';
 import { HomeButton } from './HomeButton'
 
+
 export class LandingPage extends React.Component {
+
+
 
     render() {
         return (
