@@ -10,7 +10,6 @@ const LogIn = () => {
                 <p className="itinerarydescription">LogIn to your account</p>
             </div>
 
-
             <div className="mid-container" >
                 <p className="itinerarydescription" >Enter mail and password</p>
             </div>
