@@ -17,7 +17,7 @@ export class LandingPage extends React.Component {
                     <p className="itinerarydescription">Find your perfect trip, designed by insiders who know and love their cities.</p>
                 </div>
 
-                <div className="mid-container" >
+             <div className="mid-container" >
                     <NavLink to="/Cities">
                         <p className="itinerarydescription" >Start Browsing</p>
                         <img src={circledRightarrow} alt="RightArrow" />

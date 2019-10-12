@@ -42,9 +42,5 @@ export const fetchCities = () => {
 }
 
 
-// const fetchCities = () =>{
-//     return function (dispatch){
-//         axios.get('.//cities')
-//     }
-// }
+
 export default fetchCities
