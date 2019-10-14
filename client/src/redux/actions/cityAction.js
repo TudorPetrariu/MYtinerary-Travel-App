@@ -34,6 +34,7 @@ export const fetchCities = () => {
             .then(json => {
                 dispatch(fetchCitiesSucces(json.data))
             })
+
             .catch(error => {
                 dispatch(fetchCitiesFailure(error.message))
             })

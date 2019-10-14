@@ -1,66 +1,64 @@
 import React, { Component } from 'react'
 import { HomeButton } from './HomeButton'
+import { connect } from 'react-redux';
+import { fetchCities } from "../redux/actions/cityAction"
+
+
 
 
 class MyCities extends Component {
 
-    state = {
-        cities: []
-    }
 
 
-    async componentDidMount() {
 
-        let cities = await fetch('/cities', {
-            method: "GET",
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        })
-
-            .then(res => res.json())
-            .then(json => json.data)
-
-        this.setState({
-            cities: cities
-        })
-
-
+    componentDidMount() {
+        this.props.getCities()
     }
 
     render() {
-        console.log(this.state.cities)
-        const { cities } = this.state;
+        console.log(this.props)
+        const { cities } = this.props
         const citiesList = cities.length ? (cities.map(city => {
+
             return (
                 <div key={city._id}>
-                    <div>{city.name}</div>
-                    <div>{city.country}</div>
+                    <li> {city.name} </li>
                     <img src={city.images} alt="cityimages"></img>
-
                 </div>
             )
         })) : (
-                <div>nothing</div>
+                <div>Fetching Cities..</div>
             )
+
         return (
-            <div className="app">
-                <div className="header-container">
-                    <p className="itinerarydescription">Find your perfect city</p>
+            <div>
+
+                <div >
+                    {citiesList}
                 </div>
-                <div className="mid-container" >
-                    <p className="itinerarydescription" >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis quas commodi tenetur esse nemo nesciunt, corporis praesentium deserunt. Modi facilis corrupti assumenda ipsum libero neque veritatis exercitationem voluptatem quas possimus?</p>
-                </div>
-                {citiesList}
                 <div className="footer-container">
-                    <p className="itinerarydescription">Search</p>
-
                     <HomeButton />
-
                 </div>
             </div>
 
         )
     }
 }
-export default MyCities;
+
+const mapStateToProps = (state) => {
+    return {
+
+        cities: state.cities
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getCities: () => dispatch(fetchCities())
+    }
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyCities);
+

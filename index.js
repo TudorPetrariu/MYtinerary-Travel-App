@@ -13,7 +13,7 @@ MongoClient.connect('mongodb://tudor123:tudor123@cities-shard-00-00-nv87y.mongod
     if (err) return console.log(err)
 
     app.listen(8080, () => {
-        console.log('app working on 3000')
+        console.log(" It's alive")
     });
 
     let dbase = db.db("mytinerary");
