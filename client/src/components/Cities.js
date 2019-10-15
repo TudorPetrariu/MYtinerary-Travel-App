@@ -6,21 +6,22 @@ import { fetchCities } from "../redux/actions/cityAction"
 
 
 
+
 class MyCities extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            cities: '',
-            word: '',
+            word: ''
         }
 
         this.searchHandler = this.searchHandler.bind(this)
     }
 
     searchHandler = (e) => {
-        e.preventDefault()
+
         this.setState({
             word: e.target.value
+
         })
 
     }
@@ -38,9 +39,9 @@ class MyCities extends Component {
 
             return (
 
-                <div key={city._id} className="card center" >
-                    <span > {city.name}  </span>
-                    <img src={city.images} alt="cityimages" ></img>
+                <div key={city._id} className="card center " >
+                    <h3 className="orange" > {city.name}  </h3>
+                    <img src={city.images} className="cityimages" alt="cityimages" ></img>
                 </div>
             )
         })) : (
@@ -49,9 +50,9 @@ class MyCities extends Component {
 
         return (
             <div>
-                <form>
+                <form className="center container">
                     <label htmlFor="SearchBar" >Search your city</label>
-                    <input type="text" id="SearchBar" onChange={this.searchHandler} values={word}></input>
+                    <input type="text" id="SearchBar" onChange={this.searchHandler} ></input>
                 </form>
 
                 <div className=" container ">
@@ -70,11 +71,11 @@ class MyCities extends Component {
 const mapStateToProps = (state) => {
     return {
 
-        cities: state.cities,
-        word: ''
+        cities: state.cities
 
 
     }
+
 
 }
 
@@ -83,12 +84,12 @@ const mapDispatchToProps = (dispatch) => {
         getCities: () => dispatch(fetchCities())
     }
 }
+
 function search(word) {
     return (x) => {
         return x.name.toLowerCase().includes(word.toLowerCase()) || !word;
     }
+
 }
-
-
 export default connect(mapStateToProps, mapDispatchToProps)(MyCities);
 

@@ -1,10 +1,25 @@
 
 
+
+
+
 const express = require('express');
 const MongoClient = require('mongodb').MongoClient
 const bodyParser = require('body-parser')
 var ObjectID = require('mongodb').ObjectID;
 const app = express();
+const MyCities = require('./Itynerary')
+
+const mongoose = require('mongoose')
+mongoose.connect('mongodb://localhost/MyCityInfo')
+
+mongoose.Promise = global.Promise;
+
+
+
+
+
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

@@ -1,8 +1,11 @@
-import { createStore, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk'
-import cityReducer from './reducers/cityReducer'
+import cityReducer from './reducers/cityReducer';
 
-///aici vin celelalte reducere
+import thunk from 'redux-thunk';
+
+import { createStore, applyMiddleware } from 'redux';
+
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 
-export default createStore(cityReducer, applyMiddleware(thunk))
+
+export default createStore(cityReducer, composeWithDevTools(applyMiddleware(thunk)))

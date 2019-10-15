@@ -4,9 +4,9 @@ import LogIn from './components/LogIn'
 import SignUp from './components/SignUp'
 import LandingPage from './components/LandingPage'
 import { BrowserRouter, Route } from 'react-router-dom'
-import store from './redux/store'
-import { Provider } from 'react-redux'
 
+import { Provider } from 'react-redux'
+import store from './redux/store'
 
 export class App extends React.Component {
 
@@ -20,8 +20,8 @@ export class App extends React.Component {
           <Route exact path="/Cities" component={MyCities} />
 
         </BrowserRouter>
-      </Provider>
 
+      </Provider>
     );
   }
 }
