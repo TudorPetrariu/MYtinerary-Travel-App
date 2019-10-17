@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // / routes
 const ItyneraryRoutes = require('./routes/ItyneraryRoutes')
-app.use('/Mycities', ItyneraryRoutes)
+app.use('/Mytinerary', ItyneraryRoutes)
 ////Mongoose
 const mongoose = require('mongoose')
 mongoose.connect('mongodb+srv://tudor123:tudor123@cities-nv87y.mongodb.net/test?retryWrites=true&w=majority',
@@ -20,7 +20,7 @@ mongoose.connect('mongodb+srv://tudor123:tudor123@cities-nv87y.mongodb.net/test?
 
 
 ///MongoDB Cloud Atlas Cities 
-MongoClient.connect('mongodb://tudor123:tudor123@cities-shard-00-00-nv87y.mongodb.net:27017,cities-shard-00-01-nv87y.mongodb.net:27017,cities-shard-00-02-nv87y.mongodb.net:27017/admin?ssl=true&replicaSet=cities-shard-0&authSource=admin&retryWrites=true&w=majority',
+MongoClient.connect('mongodb+srv://tudor123:tudor123@cities-nv87y.mongodb.net/test?retryWrites=true&w=majority',
     { useUnifiedTopology: true, useNewUrlParser: true }, (err, db) => {
         if (err) return console.log(err)
 

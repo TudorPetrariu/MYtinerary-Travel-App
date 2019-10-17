@@ -1,8 +1,9 @@
-import { FETCH_CITIES_FAILURE, FETCH_CITIES_REQUEST, FETCH_CITIES_SUCCES } from '../actions/cityTypes'
+import { FETCH_CITIES_FAILURE, FETCH_CITIES_REQUEST, FETCH_CITIES_SUCCES } from '../actions/Types'
 
 export const initialState = {
     loading: false,
     cities: [],
+    schema: [],
     error: ' '
 }
 

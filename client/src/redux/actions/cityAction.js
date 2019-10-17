@@ -1,4 +1,4 @@
-import { FETCH_CITIES_REQUEST, FETCH_CITIES_SUCCES, FETCH_CITIES_FAILURE } from './cityTypes'
+import { FETCH_CITIES_REQUEST, FETCH_CITIES_SUCCES, FETCH_CITIES_FAILURE } from './Types'
 
 
 
@@ -33,6 +33,7 @@ export const fetchCities = () => {
             .then(res => res.json())
             .then(json => {
                 dispatch(fetchCitiesSucces(json.data))
+                console.log(json.data)
             })
 
             .catch(error => {

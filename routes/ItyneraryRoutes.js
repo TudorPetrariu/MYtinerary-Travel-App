@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router();
-const Mytinerary = require('../models/Itynerary')
+const Mytinerary = require('../models/ItynerarySchema')
 
 
 ///Get back all the list
@@ -38,10 +38,10 @@ router.post('/', (req, res) => {
         })
 
 });
-//get a specific posts
-router.get('/:postId', async (req, res) => {
+//get a specific city
+router.get('/:id', async (req, res) => {
     try {
-        const uniqueCity = await Mytinerary.findById(req.params.postId)
+        const uniqueCity = await Mytinerary.findById(req.params.id)
         res.json(uniqueCity);
     } catch (err) {
         res.json({ message: err });
@@ -49,17 +49,22 @@ router.get('/:postId', async (req, res) => {
     }
 });
 
+router.get('/profile/:name', (req, res) => {
+    // res.render('Itynerary',{person: })
+    res.send("You requested to see" + req.params.name)
+})
+
 ////Delete a city
-router.delete('/:postId', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
-        const removeCity = await Mytinerary.remove({ _id: req.params.postId });
+        const removeCity = await Mytinerary.deleteOne({ _id: req.params.id });
         res.json(removeCity)
     } catch (err) {
         res.json({ message: err })
     }
 })
 ///Update a city
-router.patch('/:postId', async (req, res) => {
+router.patch('/:id', async (req, res) => {
     try {
         const updateCity = await Mytinerary.updateOne({ _id: req.params.id },
             { $set: { title: req.body.title } })
