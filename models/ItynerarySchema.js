@@ -13,7 +13,8 @@ const CitiesSchema = mongoose.Schema({
         type: String
     },
     duration: {
-        type: Number
+
+        type: String
     },
     price: {
         type: Number

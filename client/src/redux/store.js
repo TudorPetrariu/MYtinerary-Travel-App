@@ -1,5 +1,4 @@
-import cityReducer from './reducers/cityReducer';
-import schemaReducer from './reducers/schemaReducer'
+
 import thunk from 'redux-thunk';
 
 import { createStore, applyMiddleware } from 'redux';

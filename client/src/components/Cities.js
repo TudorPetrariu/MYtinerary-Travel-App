@@ -31,7 +31,6 @@ class MyCities extends Component {
     }
 
     render() {
-
         console.log(this.props)
         const { cities } = this.props
         const { word } = this.state
@@ -71,7 +70,7 @@ class MyCities extends Component {
 const mapStateToProps = (state) => {
     return {
 
-        cities: state.cities
+        cities: state.cityReducer.cities
 
 
     }

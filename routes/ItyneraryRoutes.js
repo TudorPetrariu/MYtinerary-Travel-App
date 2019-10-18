@@ -50,7 +50,7 @@ router.get('/:id', async (req, res) => {
 });
 
 router.get('/profile/:name', (req, res) => {
-    // res.render('Itynerary',{person: })
+
     res.send("You requested to see" + req.params.name)
 })
 

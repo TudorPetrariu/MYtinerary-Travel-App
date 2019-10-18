@@ -3,7 +3,6 @@ import { FETCH_CITIES_FAILURE, FETCH_CITIES_REQUEST, FETCH_CITIES_SUCCES } from 
 export const initialState = {
     loading: false,
     cities: [],
-    schema: [],
     error: ' '
 }
 

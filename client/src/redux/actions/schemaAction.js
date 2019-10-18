@@ -7,10 +7,10 @@ export const fetchSchemaRequest = () => {
     }
 }
 
-export const fetchSchemaSucces = (cityinfos) => {
+export const fetchSchemaSucces = (schema) => {
     return {
         type: FETCH_SCHEMA_SUCCES,
-        payload: cityinfos
+        payload: schema
     }
 }
 export const fetchSchemaFailure = error => {
@@ -31,7 +31,7 @@ export const fetchSchema = () => {
         })
             .then(res => res.json())
             .then(json => {
-                dispatch(fetchSchemaSucces(json.data))
+                dispatch(fetchSchemaSucces(json))
                 console.log(json)
             })
 

@@ -1,9 +1,7 @@
 import { FETCH_SCHEMA_FAILURE, FETCH_SCHEMA_REQUEST, FETCH_SCHEMA_SUCCES } from '../actions/Types'
-// import initialState from './cityReducer'
 
-const initialState = {
+export const initialState = {
     loading: false,
-    cities: [],
     schema: [],
     error: ' '
 }

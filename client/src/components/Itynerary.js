@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import { fetchSchema } from "../redux/actions/schemaAction"
-
 import { connect } from 'react-redux'
 
 class Itynerary extends Component {
@@ -9,19 +7,30 @@ class Itynerary extends Component {
         this.props.getSchema()
     }
 
-    // componentDidMount() {
-    //     axios.get('/Mytinerary')
-    //         .then(res => {
-    //             console.log(res)
-    //         })
-    // }
-
 
     render() {
         console.log(this.props)
+        const { schema } = this.props
+        const ItyneraryList = schema.length ? (schema.map(schem => {
+            return (
+                <div key={schem._id}>
+                    <h5>{schem.title}</h5>
+                    <p>{schem.hashtag}</p>
+                    <p>{schem.rating}</p>
+                    <img src={schem.profilePic} alt="schemaImg" ></img>
+                    <p>{schem.duration}</p>
+                    <p>With just {schem.price} euros</p>
+
+
+                </div>
+            )
+        })) : (
+                <div className="center">Getting Schema</div>
+            )
         return (
             <div>
-                <p>saffa</p>
+                {ItyneraryList}
+                <p className="center">Schema</p>
             </div>
         )
     }
@@ -29,8 +38,7 @@ class Itynerary extends Component {
 const mapStateToProps = (state) => {
     return {
 
-        schema: state.schema
-
+        schema: state.schemaReducer.schema
 
     }
 
