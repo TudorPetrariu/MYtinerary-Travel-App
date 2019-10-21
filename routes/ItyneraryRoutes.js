@@ -25,7 +25,8 @@ router.post('/', (req, res) => {
         rating: req.body.rating,
         duration: req.body.duration,
         price: req.body.price,
-        hashtag: req.body.hashtag
+        hashtag: req.body.hashtag,
+        ref: req.body.ref
 
 
     });

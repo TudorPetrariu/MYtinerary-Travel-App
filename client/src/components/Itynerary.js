@@ -1,36 +1,70 @@
 import React, { Component } from 'react'
 import { fetchSchema } from "../redux/actions/schemaAction"
 import { connect } from 'react-redux'
+import { HomeButton } from './HomeButton';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    useParams
+} from "react-router-dom";
+
 
 class Itynerary extends Component {
+    state = {
+        id: null
+    }
+
+
+    // render() {
+    //     console.log(this.props.schema)
+    //     if (!this.props.loading)
+    //         return (
+    //             <div className="container">
+    //                 <p>{this.props.schema[0].title}</p>
+    //             </div>
+    //         )
+    //     else
+    //         return (
+    //             <div>Loading ...</div>
+    //         )
+    // }
     componentDidMount() {
-        this.props.getSchema()
+        let { name } = this.props.match.params;
+        console.log(name)
+        this.props.getSchema(name)
     }
 
 
     render() {
-        console.log(this.props)
         const { schema } = this.props
         const ItyneraryList = schema.length ? (schema.map(schem => {
             return (
-                <div key={schem._id}>
-                    <h5>{schem.title}</h5>
-                    <p>{schem.hashtag}</p>
-                    <p>{schem.rating}</p>
-                    <img src={schem.profilePic} alt="schemaImg" ></img>
-                    <p>{schem.duration}</p>
-                    <p>With just {schem.price} euros</p>
+                <div key={schem._id} className="container">
+                    <h5 >{schem.title}</h5>
+                    <img src={schem.profilePic} alt="schemaImg" className="cityimages"></img>
+                    <p className="flow-text">{schem.hashtag}</p>
+                    <p className="flow-text">{schem.duration}</p>
+                    <p className="flow-text">People rate this activity with {schem.rating}</p>
 
-
+                    <p className="flow-text">With just {schem.price} euros for the best journey </p>
                 </div>
             )
         })) : (
-                <div className="center">Getting Schema</div>
+                <div className="center">Loading...</div>
             )
         return (
-            <div>
-                {ItyneraryList}
-                <p className="center">Schema</p>
+            <div className="app">
+
+                <div className="container">
+
+                    <h2 className="header-container">{ItyneraryList}</h2>
+                    <div className="mid-container"></div>
+                    <div className="footer-container">
+                        <HomeButton />
+                    </div>
+                </div>
             </div>
         )
     }
@@ -38,8 +72,8 @@ class Itynerary extends Component {
 const mapStateToProps = (state) => {
     return {
 
-        schema: state.schemaReducer.schema
-
+        schema: state.schemaReducer.schema,
+        loading: state.schemaReducer.loading
     }
 
 
@@ -47,7 +81,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getSchema: () => dispatch(fetchSchema())
+        getSchema: (name) => dispatch(fetchSchema(name))
     }
 }
 

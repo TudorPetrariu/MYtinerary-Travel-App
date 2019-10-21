@@ -1,7 +1,7 @@
 import { FETCH_SCHEMA_FAILURE, FETCH_SCHEMA_REQUEST, FETCH_SCHEMA_SUCCES } from '../actions/Types'
 
 export const initialState = {
-    loading: false,
+    loading: true,
     schema: [],
     error: ' '
 }

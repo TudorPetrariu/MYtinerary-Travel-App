@@ -3,8 +3,9 @@ import MyCities from './components/Cities'
 import LogIn from './components/LogIn'
 import SignUp from './components/SignUp'
 import LandingPage from './components/LandingPage'
-import { BrowserRouter, Route } from 'react-router-dom'
 import Itynerary from './components/Itynerary'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+
 
 import { Provider } from 'react-redux'
 import store from './redux/store'
@@ -15,12 +16,13 @@ export class App extends React.Component {
     return (
       <Provider store={store}>
         <BrowserRouter>
-          <Route exact path="/" component={LandingPage} />
-          <Route exact path="/LogIn" component={LogIn} />
-          <Route exact path="/SignUp" component={SignUp} />
-          <Route exact path="/Cities" component={MyCities} />
-          <Route exact path="/Itynerary" component={Itynerary} />
-
+          <Switch>
+            <Route exact path="/" component={LandingPage} />
+            <Route path="/LogIn" component={LogIn} />
+            <Route path="/SignUp" component={SignUp} />
+            <Route path="/Cities" component={MyCities} />
+            <Route path="/:name" component={Itynerary} />
+          </Switch>
         </BrowserRouter>
 
       </Provider>

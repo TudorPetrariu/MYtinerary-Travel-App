@@ -20,10 +20,10 @@ export const fetchSchemaFailure = error => {
     }
 }
 
-export const fetchSchema = () => {
+export const fetchSchema = (cityName) => {
     return function (dispatch) {
         dispatch(fetchSchemaRequest())
-        fetch('/Mytinerary', {
+        fetch(`/itinerary/${cityName}`, {
             method: "GET",
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'

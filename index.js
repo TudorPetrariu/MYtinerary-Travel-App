@@ -18,7 +18,6 @@ mongoose.connect('mongodb+srv://tudor123:tudor123@cities-nv87y.mongodb.net/test?
 
 
 
-
 ///MongoDB Cloud Atlas Cities 
 MongoClient.connect('mongodb+srv://tudor123:tudor123@cities-nv87y.mongodb.net/test?retryWrites=true&w=majority',
     { useUnifiedTopology: true, useNewUrlParser: true }, (err, db) => {
@@ -28,7 +27,7 @@ MongoClient.connect('mongodb+srv://tudor123:tudor123@cities-nv87y.mongodb.net/te
             console.log("Server running on port 8080 ")
         });
 
-        let dbase = db.db("mytinerary");
+        let dbase = db.db("test");
 
         app.post('/cities/add', (req, res, next) => {
 
@@ -46,6 +45,20 @@ MongoClient.connect('mongodb+srv://tudor123:tudor123@cities-nv87y.mongodb.net/te
                 res.send('data added successfully');
             });
 
+        });
+        app.get('/mycities/:id', (req, res, next) => {
+            if (err) {
+                throw err;
+            }
+
+            let id = ObjectID(req.params.id);
+            dbase.collection('CityItynerary').find(id).toArray((err, result) => {
+                if (err) {
+                    throw err;
+                }
+
+                res.send(result);
+            });
         });
 
         app.get('/cities', (req, res) => {
@@ -99,5 +112,19 @@ MongoClient.connect('mongodb+srv://tudor123:tudor123@cities-nv87y.mongodb.net/te
                 res.send('data deleted');
             });
         });
+
+
+
+
+        //
+
+        app.get("/itinerary/:name", (req, res) => {
+            dbase.collection("cityinfos").find({
+                ref: req.params.name
+            }).toArray((err, results) => {
+                if (err) throw err;
+                res.send(results);
+            })
+        })
 
     });

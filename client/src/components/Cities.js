@@ -3,7 +3,7 @@ import { HomeButton } from './HomeButton'
 import { connect } from 'react-redux';
 import { fetchCities } from "../redux/actions/cityAction"
 
-
+import { Link } from 'react-router-dom'
 
 
 
@@ -40,7 +40,9 @@ class MyCities extends Component {
 
                 <div key={city._id} className="card center " >
                     <h3 className="orange" > {city.name}  </h3>
-                    <img src={city.images} className="cityimages" alt="cityimages" ></img>
+                    <Link to={'/' + city.name}>
+                        <img src={city.images} className="cityimages" alt="cityimages" ></img>
+                    </Link>
                 </div>
             )
         })) : (
@@ -53,7 +55,6 @@ class MyCities extends Component {
                     <label htmlFor="SearchBar" >Search your city</label>
                     <input type="text" id="SearchBar" onChange={this.searchHandler} ></input>
                 </form>
-
                 <div className=" container ">
                     {citiesList}
                 </div>

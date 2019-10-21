@@ -21,6 +21,9 @@ const CitiesSchema = mongoose.Schema({
     },
     hashtag: {
         type: Array
+    },
+    ref: {
+        type: String
     }
 
 });
