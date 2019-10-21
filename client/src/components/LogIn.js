@@ -1,30 +1,55 @@
-import React from 'react'
 import { HomeButton } from './HomeButton'
 
+import React, { Component } from 'react'
 
-const LogIn = () => {
 
-    return (
-        <div className="app">
-            <div className="header-container">
-                <p className="itinerarydescription">LogIn to your account</p>
+
+class SignIn extends Component {
+    state = {
+        email: '',
+        password: ''
+
+    }
+
+    handleChange = (e) => {
+        this.setState({
+            [e.target.id]: e.target.value
+
+        })
+    }
+    handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(this.state)
+    }
+    render() {
+        return (
+            <div >
+                <div className="container">
+                    <form onSubmit={this.handleSubmit} className="white">
+                        <h5 className="grey-text text-darken-3">Sign In</h5>
+                        <div className="input-field">
+                            <label htmlFor="email">Email</label>
+                            <input type="email" id="email" onChange={this.handleChange} />
+                        </div>
+                        <div className="input-field">
+                            <label htmlFor="password">Password</label>
+                            <input type="password" id="password" onChange={this.handleChange} />
+                        </div>
+                        <div className="input-field">
+                            <button className="btn  orange darken-3 z-depth-0">LogIn</button>
+
+                        </div>
+
+                    </form>
+
+                    <div className="footer-container"><HomeButton /></div>
+
+                </div>
+
             </div>
-
-            <div className="mid-container" >
-                <p className="itinerarydescription" >Enter mail and password</p>
-            </div>
-
-
-
-
-
-            <div className="footer-container">
-                <p className="itinerarydescription">LogIn</p>
-
-                <HomeButton />
-
-            </div>
-        </div>
-    )
+        )
+    }
 }
-export default LogIn;
+
+export default SignIn
+
