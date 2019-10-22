@@ -1,5 +1,6 @@
 import cityReducer from './cityReducer'
 import schemaReducer from './schemaReducer'
+import authReducer from './authReducer'
 import { combineReducers } from 'redux'
 
 

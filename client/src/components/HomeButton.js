@@ -1,18 +1,15 @@
-import React from 'react'
+import React from 'react';
 import { NavLink } from 'react-router-dom';
-import homeIcon from '../homeIcon.png'
+import homeIcon from '../homeIcon.png';
 
 export const HomeButton = () => {
-    return (
-        <div>
-
-            <NavLink to="/" >
-                <img src={homeIcon} alt="homeIcon" />
-            </NavLink>
-        </div>
-    )
-}
+	return (
+		<div>
+			<NavLink to="/">
+				<img src={homeIcon} alt="homeIcon" />
+			</NavLink>
+		</div>
+	);
+};
 
 export default HomeButton;
-
-
