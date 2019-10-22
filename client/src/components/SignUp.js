@@ -1,13 +1,18 @@
 import { HomeButton } from './HomeButton';
-
+import { connect } from 'react-redux';
 import React, { Component } from 'react';
+import { fetchCreateUser } from '../redux/actions/authActions';
 
 class SignUp extends Component {
+	componentDidMount() {
+		this.props.createUser();
+	}
 	state = {
 		email: '',
 		password: '',
 		firstName: '',
-		lastName: ''
+		lastName: '',
+		users: ''
 	};
 
 	handleChange = (e) => {
@@ -15,6 +20,7 @@ class SignUp extends Component {
 			[e.target.id]: e.target.value
 		});
 	};
+
 	handleSubmit = (e) => {
 		e.preventDefault();
 		console.log(this.state);
@@ -55,4 +61,16 @@ class SignUp extends Component {
 	}
 }
 
-export default SignUp;
+const mapStatetoProps = (state) => {
+	return {
+		users: state.authReducer.users
+	};
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		createUser: () => dispatch(fetchCreateUser())
+	};
+};
+
+export default connect(mapStatetoProps, mapDispatchToProps)(SignUp);

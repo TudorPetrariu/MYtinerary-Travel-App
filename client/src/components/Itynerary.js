@@ -15,15 +15,13 @@ class Itynerary extends Component {
 		const ItyneraryList = schema.length ? (
 			schema.map((schem) => {
 				return (
-					<div>
-						<div key={schem._id} className="container">
-							<h5 className="collection">{schem.title}</h5>
-							<img src={schem.profilePic} alt="schemaImg" className="cityimages" />
-							<p className="flow-text">{schem.duration}.</p>
-							<p className="flow-text">{schem.hashtag}</p>
-							<p className="flow-text">People rate this activity with {schem.rating}.</p>
-							<p className="flow-text">With just {schem.price} euros for the best journey ! </p>
-						</div>
+					<div key={schem._id} className="container">
+						<h5 className="collection">{schem.title}</h5>
+						<img src={schem.profilePic} alt="schemaImg" className="cityimages" />
+						<p className="flow-text">{schem.duration}.</p>
+						<p className="flow-text">{schem.hashtag}</p>
+						<p className="flow-text">People rate this activity with {schem.rating}.</p>
+						<p className="flow-text">With just {schem.price} euros for the best journey ! </p>
 					</div>
 				);
 			})
