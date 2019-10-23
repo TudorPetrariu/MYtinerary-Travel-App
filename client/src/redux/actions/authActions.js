@@ -1,4 +1,52 @@
 import { CREATE_NEW_USER_SUCCES, CREATE_NEW_USER_REQUEST, CREATE_NEW_USER_FAILURE } from './Types';
+import { USER_LOGIN_REQUEST, USER_LOGIN_FAILURE, USER_LOGIN_SUCCES } from './Types';
+
+export const LogInUserRequest = () => {
+	return {
+		type: USER_LOGIN_REQUEST
+	};
+};
+
+export const LogInUserSucces = (users) => {
+	return {
+		type: USER_LOGIN_SUCCES,
+		payload: users
+	};
+};
+
+export const LogInUserFailure = (error) => {
+	return {
+		type: USER_LOGIN_FAILURE,
+		payload: error
+	};
+};
+
+export const LogIn = (body) => {
+	return (dispatch) => {
+		dispatch(LogInUserRequest());
+		fetch('/user/LogIn', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(body)
+		})
+			.then((res) => {
+				console.log(res);
+				return res.json();
+			})
+			.then((json) => {
+				console.log(json);
+				dispatch(LogInUserSucces(json));
+			})
+			.catch((error) => {
+				console.log(error);
+				dispatch(LogInUserFailure(error.message));
+			});
+	};
+};
+
+/////////////////////////////
 
 export const fetchUserRequest = () => {
 	return {
@@ -20,7 +68,7 @@ export const fetchUserFailure = (error) => {
 	};
 };
 
-export const fetchCreateUser = (body) => {
+export const CreateAccount = (body) => {
 	return (dispatch) => {
 		dispatch(fetchUserRequest());
 		fetch('user/SignUp', {

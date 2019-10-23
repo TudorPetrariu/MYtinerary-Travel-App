@@ -1,5 +1,6 @@
 import { HomeButton } from './HomeButton';
-
+import { connect } from 'react-redux';
+import { LogIn } from '../redux/actions/authActions';
 import React, { Component } from 'react';
 
 class SignIn extends Component {
@@ -15,7 +16,7 @@ class SignIn extends Component {
 	};
 	handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(this.state);
+		this.props.Log(this.state);
 	};
 	render() {
 		return (
@@ -45,4 +46,16 @@ class SignIn extends Component {
 	}
 }
 
-export default SignIn;
+// const mapStateToProps = (state) => {
+// 	return {
+// 		error: state.authReducer.error
+// 	};
+// };
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		Log: (users) => dispatch(LogIn(users))
+	};
+};
+
+export default connect(null, mapDispatchToProps)(SignIn);

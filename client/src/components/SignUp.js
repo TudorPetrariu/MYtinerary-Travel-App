@@ -1,7 +1,7 @@
 import { HomeButton } from './HomeButton';
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
-import { fetchCreateUser } from '../redux/actions/authActions';
+import { CreateAccount } from '../redux/actions/authActions';
 
 class SignUp extends Component {
 	state = {
@@ -22,6 +22,7 @@ class SignUp extends Component {
 		this.props.createUser(this.state);
 	};
 	render() {
+		const { error } = this.props;
 		return (
 			<div className="app">
 				<div className="container">
@@ -30,6 +31,7 @@ class SignUp extends Component {
 						<div className="input-field ">
 							<label htmlFor="email">Email</label>
 							<input type="email" id="email" onChange={this.handleChange} />
+							<div className="red-text ">{error ? <p>{error}</p> : null}</div>
 						</div>
 						<div className="input-field">
 							<label htmlFor="password">Password</label>
@@ -56,11 +58,15 @@ class SignUp extends Component {
 		);
 	}
 }
-
+const mapStateToProps = (state) => {
+	return {
+		error: state.authReducer.error
+	};
+};
 const mapDispatchToProps = (dispatch) => {
 	return {
-		createUser: (users) => dispatch(fetchCreateUser(users))
+		createUser: (users) => dispatch(CreateAccount(users))
 	};
 };
 
-export default connect(null, mapDispatchToProps)(SignUp);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

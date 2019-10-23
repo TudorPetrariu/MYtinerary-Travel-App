@@ -19,6 +19,10 @@ const userSchema = mongoose.Schema({
 	lastName: {
 		type: String,
 		require: true
+	},
+	date: {
+		type: Date,
+		default: Date.now
 	}
 });
 
