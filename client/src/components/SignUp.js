@@ -4,15 +4,11 @@ import React, { Component } from 'react';
 import { fetchCreateUser } from '../redux/actions/authActions';
 
 class SignUp extends Component {
-	componentDidMount() {
-		this.props.createUser();
-	}
 	state = {
 		email: '',
 		password: '',
 		firstName: '',
-		lastName: '',
-		users: ''
+		lastName: ''
 	};
 
 	handleChange = (e) => {
@@ -23,7 +19,7 @@ class SignUp extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(this.state);
+		this.props.createUser(this.state);
 	};
 	render() {
 		return (
@@ -61,16 +57,10 @@ class SignUp extends Component {
 	}
 }
 
-const mapStatetoProps = (state) => {
-	return {
-		users: state.authReducer.users
-	};
-};
-
 const mapDispatchToProps = (dispatch) => {
 	return {
-		createUser: () => dispatch(fetchCreateUser())
+		createUser: (users) => dispatch(fetchCreateUser(users))
 	};
 };
 
-export default connect(mapStatetoProps, mapDispatchToProps)(SignUp);
+export default connect(null, mapDispatchToProps)(SignUp);

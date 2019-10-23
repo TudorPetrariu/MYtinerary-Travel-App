@@ -1,7 +1,7 @@
 import { CREATE_NEW_USER_REQUEST, CREATE_NEW_USER_SUCCES, CREATE_NEW_USER_FAILURE } from '../actions/Types';
 
 const initialState = {
-	loading: false,
+	loading: true,
 	users: [],
 	error: ''
 };
