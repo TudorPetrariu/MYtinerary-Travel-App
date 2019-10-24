@@ -19,6 +19,7 @@ class SignIn extends Component {
 		this.props.Log(this.state);
 	};
 	render() {
+		const { error } = this.props;
 		return (
 			<div className="app">
 				<div className="container">
@@ -34,6 +35,7 @@ class SignIn extends Component {
 						</div>
 						<div className="input-field">
 							<button className="btn  orange darken-3 z-depth-2">LogIn</button>
+							<div className="red-text center">{error ? <p>{error}</p> : null}</div>
 						</div>
 					</form>
 
@@ -46,11 +48,11 @@ class SignIn extends Component {
 	}
 }
 
-// const mapStateToProps = (state) => {
-// 	return {
-// 		error: state.authReducer.error
-// 	};
-// };
+const mapStateToProps = (state) => {
+	return {
+		error: state.authReducer.error
+	};
+};
 
 const mapDispatchToProps = (dispatch) => {
 	return {
@@ -58,4 +60,4 @@ const mapDispatchToProps = (dispatch) => {
 	};
 };
 
-export default connect(null, mapDispatchToProps)(SignIn);
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

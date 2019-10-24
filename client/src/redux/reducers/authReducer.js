@@ -18,7 +18,7 @@ const authReducer = (state = initialState, action) => {
 			console.log('user failed to login');
 			return {
 				...state,
-				error: 'Login failed'
+				error: "Email or password doesn't exists "
 			};
 		case USER_LOGIN_SUCCES:
 			console.log('login succes');

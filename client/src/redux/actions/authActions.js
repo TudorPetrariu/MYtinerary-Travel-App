@@ -45,7 +45,6 @@ export const LogIn = (body) => {
 			});
 	};
 };
-
 /////////////////////////////
 
 export const fetchUserRequest = () => {
