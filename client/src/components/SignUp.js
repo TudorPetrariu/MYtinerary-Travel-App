@@ -23,6 +23,7 @@ class SignUp extends Component {
 	};
 	render() {
 		const { error } = this.props;
+		console.log(this.state);
 		return (
 			<div className="app">
 				<div className="container">

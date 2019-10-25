@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { fetchSchema } from '../redux/actions/schemaAction';
 import { connect } from 'react-redux';
 import { HomeButton } from './HomeButton';
+import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class Itynerary extends Component {
 	componentDidMount() {
@@ -31,7 +33,9 @@ class Itynerary extends Component {
 		return (
 			<div className="app">
 				<h5 className="center  z-depth-1"> Find here your best activities</h5>
+
 				<div className=" center">{ItyneraryList}</div>
+
 				<div className="mid-container" />
 				<div className="footer-container">
 					<HomeButton />

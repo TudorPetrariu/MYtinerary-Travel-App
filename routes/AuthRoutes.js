@@ -3,6 +3,7 @@ const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('./config');
+const verify = require('./tokenverify');
 
 router.post('/SignUp', async (req, res) => {
 	///check for email duplicates
@@ -30,7 +31,7 @@ router.post('/SignUp', async (req, res) => {
 });
 ////LOGIN
 router.post('/LogIn', async (req, res) => {
-	console.log(req.body);
+	// console.log(req.body);
 
 	///Checking if email  it's valid
 	const user = await User.findOne({ email: req.body.email });
@@ -49,8 +50,13 @@ router.post('/LogIn', async (req, res) => {
 	return res.status(201).send({
 		success: true,
 		message: 'Logged In',
-		token
+		token,
+		user
 	});
 });
 
+router.get('/', verify, (req, res) => {
+	res.send(req.user);
+	User.findbyOne({ _id: req.user });
+});
 module.exports = router;

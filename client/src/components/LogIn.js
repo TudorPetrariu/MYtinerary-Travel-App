@@ -1,6 +1,6 @@
 import { HomeButton } from './HomeButton';
 import { connect } from 'react-redux';
-import { LogIn } from '../redux/actions/authActions';
+import { LogIn, userLogout } from '../redux/actions/authActions';
 import React, { Component } from 'react';
 
 class SignIn extends Component {
@@ -18,8 +18,15 @@ class SignIn extends Component {
 		e.preventDefault();
 		this.props.Log(this.state);
 	};
+
+	handleClick = (e) => {
+		e.preventDefault();
+		localStorage.removeItem('auth-token');
+		this.props.logOutUser();
+	};
 	render() {
 		const { error } = this.props;
+		console.log(this.state);
 		return (
 			<div className="app">
 				<div className="container">
@@ -29,6 +36,7 @@ class SignIn extends Component {
 							<label htmlFor="email">Email</label>
 							<input type="email" id="email" onChange={this.handleChange} />
 						</div>
+
 						<div className="input-field">
 							<label htmlFor="password">Password</label>
 							<input type="password" id="password" onChange={this.handleChange} />
@@ -38,7 +46,7 @@ class SignIn extends Component {
 							<div className="red-text center">{error ? <p>{error}</p> : null}</div>
 						</div>
 					</form>
-
+					{<button onClick={this.handleClick}>Log Out</button>}
 					<div className="footer-container">
 						<HomeButton />
 					</div>
@@ -50,13 +58,15 @@ class SignIn extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		error: state.authReducer.error
+		error: state.authReducer.error,
+		users: state.authReducer.users
 	};
 };
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		Log: (users) => dispatch(LogIn(users))
+		Log: (users) => dispatch(LogIn(users)),
+		logOutUser: (users) => dispatch(userLogout(users))
 	};
 };
 

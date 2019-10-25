@@ -1,5 +1,12 @@
-import { CREATE_NEW_USER_REQUEST, CREATE_NEW_USER_SUCCES, CREATE_NEW_USER_FAILURE } from '../actions/Types';
-import { USER_LOGIN_REQUEST, USER_LOGIN_FAILURE, USER_LOGIN_SUCCES } from '../actions/Types';
+import {
+	CREATE_NEW_USER_REQUEST,
+	CREATE_NEW_USER_SUCCES,
+	CREATE_NEW_USER_FAILURE,
+	USER_LOGIN_REQUEST,
+	USER_LOGIN_FAILURE,
+	USER_LOGIN_SUCCES,
+	USER_LOGOUT
+} from '../actions/Types';
 
 const initialState = {
 	loading: true,
@@ -18,13 +25,18 @@ const authReducer = (state = initialState, action) => {
 			console.log('user failed to login');
 			return {
 				...state,
-				error: "Email or password doesn't exists "
+				error: 'Invalid mail or password '
 			};
 		case USER_LOGIN_SUCCES:
 			console.log('login succes');
 			return {
 				...state,
 				error: null
+			};
+		case USER_LOGOUT:
+			return {
+				...state,
+				users: []
 			};
 
 		case CREATE_NEW_USER_REQUEST:

@@ -1,6 +1,14 @@
-import { CREATE_NEW_USER_SUCCES, CREATE_NEW_USER_REQUEST, CREATE_NEW_USER_FAILURE } from './Types';
-import { USER_LOGIN_REQUEST, USER_LOGIN_FAILURE, USER_LOGIN_SUCCES } from './Types';
+import {
+	CREATE_NEW_USER_SUCCES,
+	CREATE_NEW_USER_REQUEST,
+	CREATE_NEW_USER_FAILURE,
+	USER_LOGIN_REQUEST,
+	USER_LOGIN_FAILURE,
+	USER_LOGIN_SUCCES,
+	USER_LOGOUT
+} from './Types';
 
+//////USER LOGIN
 export const LogInUserRequest = () => {
 	return {
 		type: USER_LOGIN_REQUEST
@@ -38,6 +46,7 @@ export const LogIn = (body) => {
 			.then((json) => {
 				console.log(json);
 				dispatch(LogInUserSucces(json));
+				localStorage.setItem('auth-token', json.token);
 			})
 			.catch((error) => {
 				console.log(error);
@@ -45,7 +54,16 @@ export const LogIn = (body) => {
 			});
 	};
 };
-/////////////////////////////
+
+///////////USER LOGOUT
+
+export const userLogout = () => {
+	return {
+		type: USER_LOGOUT
+	};
+};
+
+///////////////////////////// CREATE USER ACCOUNT
 
 export const fetchUserRequest = () => {
 	return {

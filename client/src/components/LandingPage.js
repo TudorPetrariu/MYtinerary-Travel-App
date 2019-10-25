@@ -9,6 +9,11 @@ export class LandingPage extends React.Component {
 		return (
 			<div className="app">
 				<div className="header-container">
+					<ul>
+						<NavLink to="/" className="btn btn-floating orange lighten-1">
+							NN
+						</NavLink>
+					</ul>
 					<img className="MYtineraryLogo" src={MYtineraryLogo} alt="ItineraryLogo" />
 					<p className="itinerarydescription">
 						Find your perfect trip, designed by insiders who know and love their cities.
