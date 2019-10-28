@@ -11,6 +11,10 @@ const userSchema = new mongoose.Schema({
 		require: true,
 		min: 6
 	},
+	token: {
+		type: String,
+		require: true
+	},
 
 	firstName: {
 		type: String,

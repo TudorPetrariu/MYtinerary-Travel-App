@@ -17,13 +17,28 @@ class Itynerary extends Component {
 		const ItyneraryList = schema.length ? (
 			schema.map((schem) => {
 				return (
-					<div key={schem._id} className="container">
-						<h5 className="collection">{schem.title}</h5>
-						<img src={schem.profilePic} alt="schemaImg" className="cityimages" />
-						<p className="flow-text">{schem.duration}.</p>
-						<p className="flow-text">{schem.hashtag}</p>
-						<p className="flow-text">People rate this activity with {schem.rating}.</p>
-						<p className="flow-text">With just {schem.price} euros for the best journey ! </p>
+					<div key={schem._id} className="row">
+						<div className="col s12 16">
+							<div className="card">
+								<div className="card-image">
+									<img src={schem.profilePic} alt="schemaImg" />
+									<a href="#" className="halfway-fab btn-floating orange pulse">
+										<i className="material-icons">favorite</i>
+									</a>
+								</div>
+								<div className="card-content">
+									<span className="card-title">{schem.title}</span>
+
+									<p className="flow-text">{schem.duration}.</p>
+									<p className="flow-text">{schem.hashtag}</p>
+									<p className="flow-text">People rate this activity with {schem.rating}.</p>
+									<p className="flow-text">With just {schem.price} euros for the best journey ! </p>
+								</div>
+								<div className="card-action">
+									<a href="#">More Details</a>
+								</div>
+							</div>
+						</div>
 					</div>
 				);
 			})
@@ -31,10 +46,10 @@ class Itynerary extends Component {
 			<div className="center">Loading...</div>
 		);
 		return (
-			<div className="app">
+			<div>
 				<h5 className="center  z-depth-1"> Find here your best activities</h5>
 
-				<div className=" center">{ItyneraryList}</div>
+				<div>{ItyneraryList}</div>
 
 				<div className="mid-container" />
 				<div className="footer-container">

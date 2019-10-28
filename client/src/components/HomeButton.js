@@ -6,7 +6,7 @@ export const HomeButton = () => {
 	return (
 		<div>
 			<NavLink to="/">
-				<img src={homeIcon} alt="homeIcon" />
+				<img src={homeIcon} className="MYtineraryLogo" alt="homeIcon" />
 			</NavLink>
 		</div>
 	);

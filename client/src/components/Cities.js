@@ -50,7 +50,8 @@ class MyCities extends Component {
 					<label htmlFor="SearchBar">Search your city</label>
 					<input type="text" id="SearchBar" onChange={this.searchHandler} />
 				</form>
-				<div className=" container ">{citiesList}</div>
+				<div className=" card-content
+				 ">{citiesList}</div>
 
 				<div className="footer-container">
 					<HomeButton />

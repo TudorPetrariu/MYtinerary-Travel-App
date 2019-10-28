@@ -14,7 +14,7 @@ export class LandingPage extends React.Component {
 							NN
 						</NavLink>
 					</ul>
-					<img className="MYtineraryLogo" src={MYtineraryLogo} alt="ItineraryLogo" />
+					<img className="MYtineraryLogotitle" src={MYtineraryLogo} alt="ItineraryLogo" />
 					<p className="itinerarydescription">
 						Find your perfect trip, designed by insiders who know and love their cities.
 					</p>
@@ -23,7 +23,7 @@ export class LandingPage extends React.Component {
 				<div className="mid-container">
 					<NavLink to="/Cities">
 						<p className="itinerarydescription">Start Browsing</p>
-						<img src={circledRightarrow} alt="RightArrow" />
+						<img src={circledRightarrow} className="MYtineraryLogo" alt="RightArrow" />
 					</NavLink>
 				</div>
 

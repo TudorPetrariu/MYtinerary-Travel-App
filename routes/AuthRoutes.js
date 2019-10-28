@@ -4,15 +4,18 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('./config');
 const verify = require('./tokenverify');
+const ObjectId = require('objectid');
 
 router.post('/SignUp', async (req, res) => {
 	///check for email duplicates
+
 	const emailExist = await User.findOne({ email: req.body.email });
 	if (emailExist) return res.status(400).send('This email is already in use');
 
 	///////////////HASH PASSWORD
 	const salt = await bcrypt.genSalt(10);
 	const hashedPassword = await bcrypt.hash(req.body.password, salt);
+	////////////
 
 	//CREATE NEW USER
 	const user = new User({
@@ -22,12 +25,14 @@ router.post('/SignUp', async (req, res) => {
 		lastName: req.body.lastName,
 		date: req.body.date
 	});
-	try {
-		const savedUser = await user.save();
-		res.send(savedUser);
-	} catch (err) {
-		res.status(400).send(err);
-	}
+
+	const savedUser = await user.save();
+
+	const token = jwt.sign({ _id: user._id }, config.TokenSecret);
+	return res.status(201).send({
+		savedUser,
+		token
+	});
 });
 ////LOGIN
 router.post('/LogIn', async (req, res) => {
@@ -48,15 +53,23 @@ router.post('/LogIn', async (req, res) => {
 	res.header('auth-token', token);
 
 	return res.status(201).send({
-		success: true,
-		message: 'Logged In',
+		succes: true,
 		token,
 		user
 	});
 });
 
-router.get('/', verify, (req, res) => {
-	res.send(req.user);
-	User.findbyOne({ _id: req.user });
+router.get('/', verify, async (req, res) => {
+	try {
+		const user = await User.findOne({
+			_id: ObjectId(req.user._id)
+		});
+		console.log(user);
+		res.json(user);
+	} catch (err) {
+		console.log(err);
+		res.json({ message: err });
+	}
 });
+
 module.exports = router;
