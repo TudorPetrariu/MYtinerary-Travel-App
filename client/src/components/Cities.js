@@ -26,7 +26,6 @@ class MyCities extends Component {
   }
 
   render() {
-    console.log(this.props);
     const { cities } = this.props;
     const { word } = this.state;
     const citiesList = cities.length ? (
@@ -82,7 +81,4 @@ function search(word) {
     return x.name.toLowerCase().includes(word.toLowerCase()) || !word;
   };
 }
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MyCities);
+export default connect(mapStateToProps, mapDispatchToProps)(MyCities);
